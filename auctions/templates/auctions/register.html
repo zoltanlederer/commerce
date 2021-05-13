@@ -1,0 +1,49 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container">
+    {% if message %}
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            <h2>{{ message }}</h2>
+        </div>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="POST">
+    {% csrf_token %}
+        <div class="card text-dark bg-light mb-3 mt-4">
+            <div class="card-header text-center"><h2>Register</h2></div>
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input class="form-control" autofocus type="text" id="username" name="username" maxlength="64" placeholder="Username"required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email Address" maxlength="128" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password" maxlength="64" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmation" class="form-label">Password Confirmation</label>
+                    <input class="form-control" type="password" id="confirmation" name="confirmation" placeholder="Confirm Password" maxlength="64" required>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <input class="btn btn-primary" type="submit" value="Register">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+</div>
+{% endblock %}
+
+
+

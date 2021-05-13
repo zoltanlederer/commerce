@@ -1,0 +1,54 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container mt-4">
+
+    {# List all categories #}
+    {% if categoryList %}
+    <h2 class="mb-5">All Categories</h2>
+        <div class="row">
+            {% for product in categoryList %}
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card mb-3 text-center" style="max-width: 18rem;">
+                        <a class="card-header text-dark card-custom" href="{% url 'category' product %}" style="text-decoration: none;" >
+                           <strong> {{ product }} </strong>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {# # Items within the specified category #}
+    <div>
+        {% if category %}
+            <h2 class="mb-4">Category - {{ categoryTitle }}</h2>
+        <div class="row">
+            {% for item in category %}
+                <div class="col-lg-3 col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="card mb-3 text-center" style="max-width: 18rem;">
+                        <a class="card-custom" href="{% url 'item' item.id %}" style="text-decoration: none;" >
+                            <div class="card-header text-dark">
+                                <strong> {{ item.title }} 
+                                {% if item.active == False %}
+                                    <br><span style="color: #d53343;">(Auction Closed)</span>
+                                {% endif %}
+                                </strong>
+                            </div>
+                            <div><img src={{ item.image }} alt="{{ item.title }}" class="list-img-custom" /></div>
+                            <div class="text-dark"><p>{{ item.shortDescription }}</p></div>
+                            <div class="card-footer text-dark">
+                                <p>Current Price: ${{ item.price }}</p>
+                                <p><span style="color: #0d6efd; font-size: 1rem">Created by {{ item.created }}</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+   
+{% endblock %}

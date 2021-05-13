@@ -1,0 +1,94 @@
+body {
+    padding: 0px;
+}
+
+/***** index.html, categories.html *****/
+
+.list-img-custom {
+    width: 150px;
+    padding-top: 20px;
+}
+
+.dropdown-menu {
+    border: none;
+}
+
+.card-custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-shadow: 1px 2px 9px -1px rgba(0,0,0,0.75);
+}
+
+.card-custom:hover {
+    box-shadow: initial;
+}
+
+.card-custom p {
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+/**** item.html *****/
+
+.item-img-custom {
+    max-width: 250px;
+}
+
+.item-watchlist-close-btn-custom > form{
+    margin-bottom: 20px;
+}
+
+.item-comment-btn-custom {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.item-bid-price {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.item-bid-history {
+    margin-top: 30px;
+}
+
+.item-bid-history h7 {
+    padding: 5px 0 15px 10px;
+}
+
+.item-bid-history div, .item-bid-history p {
+    margin: 0;
+    padding: 5px;
+}
+
+.item-bid-history ul{
+    list-style-type: none;
+    font-size: 0.8rem;
+    padding-left: 0px;
+    margin: 0;
+}
+
+.item-bid-history ul li{
+    padding: 10px;
+}
+
+.item-bid-history ul li:nth-child(odd) {
+    background-color: #e9ecef;
+}
+
+.card-comments {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 575.98px) {
+    .flex-custom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-6, .col-4, .col-8 {
+        width: 80%;
+    }
+}

@@ -1,0 +1,56 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if user.is_authenticated %}
+    <div class="container mt-4">
+        <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+            <div class="card text-dark bg-light mb-3">
+                <div class="card-header text-center"><h2>Create a New Listing</h2></div>
+                <div class="card-body"> 
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" maxlength="64" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="short-description" class="form-label">Short Description</label>
+                        <input type="text" class="form-control" id="short-description" name="short-description" placeholder="Short Description" maxlength="256" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" maxlength="356" required>
+                    </div>
+
+                    <label for="price" class="form-label">Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="number" step="any" class="form-control" id="price" name="price" placeholder="Price" min="1" max="99999" required>
+                    </div>
+
+                    <label for="image" class="form-label">Image URL (Optional)</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">URL</span>
+                        <input type="text" class="form-control" id="image" name="image" placeholder="Image URL (Optional)" maxlength="500">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" class="form-control" id="category" name="category" placeholder="Category" maxlength="32" required>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <input class="btn btn-primary" type="submit" value="Create Listing">
+                    </div>
+                </div>
+            </div>
+        </form>
+    <div>
+    {% else %}
+        <div class="alert alert-warning text-center mt-5" role="alert">
+            <h2>Please Log In</h2>
+        </div>
+    {% endif %}
+    
+{% endblock %}
